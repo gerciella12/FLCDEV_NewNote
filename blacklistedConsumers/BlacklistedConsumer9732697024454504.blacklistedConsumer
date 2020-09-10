@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BlacklistedConsumer xmlns="http://soap.sforce.com/2006/04/metadata">
+    <blockedByApiWhitelisting>false</blockedByApiWhitelisting>
+    <consumerKey>3MVG9A2kN3Bn17htbPQ91eAD_8.xPi7DRAKfHpAzR2dfq.c11XMu41iV5IKCBFl00Ey5ZJYuVn.lcTjlzwfut</consumerKey>
+    <consumerName>Ifbyphone API</consumerName>
+    <masterLabel>BlacklistedConsumer9732697024429250</masterLabel>
+</BlacklistedConsumer>

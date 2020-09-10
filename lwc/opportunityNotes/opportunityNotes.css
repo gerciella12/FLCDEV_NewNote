@@ -1,0 +1,13 @@
+/**
+ * Created 07.09.2020.
+ */
+.rowHolder {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.rowHolder .slds-textarea {
+    border: none;
+}
+.icn svg {
+    fill: white;
+}

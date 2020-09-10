@@ -1,0 +1,91 @@
+<!--
+ - Created 07.09.2020.
+ -->
+
+<!-- Opportunity Notes -->
+<template>
+    <template if:true={isSpinner}>
+        <lightning-spinner variant="brand" alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+
+    <template if:false={isError}>
+        <lightning-card title="Notes" icon-name="custom:custom14">
+            <div slot="actions">
+                <lightning-button variant="brand"
+                                  label="New Note"
+                                  title="New Note"
+                                  onclick={handleOpenModal}
+                                  class="slds-m-left_x-small">
+                </lightning-button>
+            </div>
+            <template for:each={notes} for:item=note>
+                <div class="rowHolder" key={note.id}>
+                    <div class="slds-m-vertical_medium">
+                        <div class="slds-text-body_regular">
+                            From:&nbsp;&nbsp;<a href={note.createdBy.redirectId} target=_blank>{note.createdBy.name}</a>
+                            <span>,&nbsp;&nbsp;</span>
+                            <span>{note.createdDate}</span>
+                        </div>
+                        <div style="display: flex;" class="slds-text-body_regular">
+                            <div>To:&nbsp;&nbsp;</div>
+                            <div>
+                                <template for:each={note.sendToAddresses} for:item=sendToAddress>
+                                    <div key={sendToAddress}><a>{sendToAddress}</a></div>
+                                </template>
+                            </div>
+                        </div>
+                        <p class="slds-text-body_regular slds-textarea">{note.note}</p>
+                    </div>
+                </div>
+            </template>
+        </lightning-card>
+        <c-modal-window header={header}>
+            <div class="row">
+                <label class="slds-form-element__label slds-form-element__legend">Note</label>
+                <lightning-textarea name="note"
+                                    onkeyup={handleChangeNote}>
+                </lightning-textarea>
+            </div>
+            <div class="row">
+                <lightning-dual-listbox name="notifyUsers"
+                                        label="Notify Users"
+                                        source-label="Active Users"
+                                        selected-label="Selected Users"
+                                        field-level-help="Select users to whom the notification will go"
+                                        options={activeUsers}
+                                        onchange={handleChangeNotifyUsers}>
+                </lightning-dual-listbox>
+            </div>
+            <div slot="footer">
+                <lightning-button
+                        class="slds-button"
+                        label="Cancel"
+                        variant="neutral"
+                        onclick={handleCancelModal}
+                ></lightning-button>
+                <lightning-button
+                        class="slds-button"
+                        label="Save"
+                        variant="brand"
+                        disabled={isNewNoteBtnDisabled}
+                        onclick={saveNote}
+                ></lightning-button>
+            </div>
+        </c-modal-window>
+    </template>
+
+    <template if:true={isError}>
+        <lightning-card title="">
+            <div class="slds-p-around_medium">
+                <div style="width: -webkit-fill-available;" class="slds-notify slds-notify--toast slds-theme--error" role="alert">
+                    <div class="slds-notify__content slds-grid icn">
+                        <lightning-icon icon-name="utility:warning"></lightning-icon>
+                        <div style="margin-left: 10px;min-width: 0rem;" class="slds-col slds-align-middle">
+                            <h2 style="white-space: inherit;" class="slds-text-heading--small">{error}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+</template>
