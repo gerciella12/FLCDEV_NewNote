@@ -7,7 +7,6 @@
           <option name="connectionName" value="FLCDEV" />
           <option name="connectionType" value="OAUTH" />
           <option name="defaultModuleName" value="FLCDEV" />
-          <option name="offlineSymbolTablePath" value="$PROJECT_DIR$/IlluminatedCloud/FLCDEV/OfflineSymbolTable.zip" />
         </IlluminatedCloudConnection>
       </list>
     </option>

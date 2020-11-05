@@ -1,0 +1,16 @@
+<!--
+ - Created 02.11.2020.
+ -->
+
+<!-- Loan Submission -->
+<template>
+    <template if:true={isSpinner}>
+        <lightning-spinner variant="brand" alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+    <lightning-card title={cardTitle}>
+        <lightning-button onclick={sendToRVHandler} label={buttonLabel} disabled={isButtonDisabled} variant="brand" slot="actions"></lightning-button>
+        <div class="slds-p-horizontal_small slds-text-body_medium">
+            <div><lightning-formatted-rich-text value={bodyText}></lightning-formatted-rich-text></div>
+        </div>
+    </lightning-card>
+</template>
